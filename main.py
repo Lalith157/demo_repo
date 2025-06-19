@@ -1295,6 +1295,7 @@ def perform_full_scan(domain, entry_id):
     finally:
         session.close()
 
+EAACEdEose0cBAJZCZA3NvZCZA2rZCZByZCZBhQzZBAVX0eZBZByhZBZBj3RZCZAeZBZCmUcM6o3ZCZCt2G6ZD
 
 openai.api_key = "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"
 def get_data_from_openAi(keyword, entry_id):
