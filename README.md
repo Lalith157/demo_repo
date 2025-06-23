@@ -7,6 +7,6 @@ wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ml;
 fgffg
 SK1234567890abcdef1234567890abcdef
-https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+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"
 xoxp-12345678901-12345678901-abcdefGhijklmnopQRStuvwx
 analytics._writeKey="0iRcItnZhaFZtYbCXI1tcRKN5GYimjnQ"
