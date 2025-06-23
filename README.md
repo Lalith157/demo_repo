@@ -8,3 +8,4 @@ sk-proj-F2p3xMQnF7lQZ
 sk-proj-F2p3xMQnF7lQ_aUkJEN9qvN9yL9gDPeM014PkaKIfIBMlkdPGxGsST3BlbkFJjyTIJWOzlkfEmZx_fvCYms7W_P5cT6SuxIRXia8eAeAbnOH_nw8Y76IkaQwt3JuYXyStHG30sA"
 openai.api_key = "sk-F2p3xMQnF7lQZgftKPiRT3blbkFJ35C1lPiWJXz3o2r8aBr9"
 ffg
+wdfer
