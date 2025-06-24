@@ -6,3 +6,4 @@ openai.api_key = "sk-F2p3xMQnF7lQZgftKPiRT3blbkFJ35C1lPiWJXz3o2r8aBr9"
 sqdfe
 ;lkjn
 fwegr
+scvdb
