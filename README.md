@@ -6,3 +6,4 @@ sk-proj-F2p3xMQnF7lQ_aUkJEN9qvN9yL9gDPeM014PkaKIfIBMlkdPGxGsST3BlbkFJjyTIJWOzlkf
 openai.api_key = "sk-F2p3xMQnF7lQZgftKPiRT3blbkFJ35C1lPiWJXz3o2r8aBr9"
 sqdfe
 ;lkjn
+fwegr
