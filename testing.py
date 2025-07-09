@@ -1,3 +1,3 @@
 x = 23
 y =44
-print(hello + x)
+print(hello + x * "y")
