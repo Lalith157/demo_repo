@@ -1,8 +1,6 @@
 import os
 import sys
 
-app = Flask(__name__)
-
 def read_file(filepath):
     with open(filepath, 'r') as f:
         content = f.read()
