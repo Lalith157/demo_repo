@@ -6,4 +6,3 @@ else:
 print(hello + x * "y");
 ,msd
 evrf
-wefgr
