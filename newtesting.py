@@ -1,4 +1,4 @@
-import sqlite3;
+import sqlite3;g
 
 def get_user_data(username):
     conn = sqlite3.connect("users.db");
