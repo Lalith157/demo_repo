@@ -6,7 +6,7 @@ def get_user_data(username):
     query = "SELECT * FROM users WHERE username = '" + username + "';"
     cursor.execute(query)
     result = cursor.fetchall()
-    conn.close()
+    conn.close();
     return result;
     
 print(get_user_data(input("Enter username: ")));
