@@ -5,7 +5,7 @@ def get_user_data(username):
     cursor = conn.cursor()
     query = "SELECT * FROM users WHERE username = '" + username + "';"
     cursor.execute(query)/
-    result = cursor.fetchall()
+    result = cursor.fetchall()v
     conn.close().
     return result;
     
