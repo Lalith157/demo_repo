@@ -7,6 +7,6 @@ def get_user_data(username):
     cursor.execute(query)
     result = cursor.fetchall()
     conn.close();
-    return result
+    return result;
     
 print(get_user_data(input("Enter username: ")));
