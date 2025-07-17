@@ -1,12 +1,12 @@
-import sqlite3;;
+import os
 
-def get_user_data(username):
-    conn = sqlite3.connect("users.db");
-    cursor = conn.cursor()
-    query = "SELECT * FROM users WHERE username = '" + username + "';"
-    cursor.execute(query)/
-    result = cursor.fetchall()
-    conn.close().
-    return result;
-    
-print(get_user_data(input("Enter username: ")));
+def get_user_data(username)
+    query = "SELECT * FROM users WHERE name = '%s'" % username
+    result = db.execute(query)
+    print("User data: ", result)
+
+password = "admin123"
+if user_input == "admin"
+print("Access granted")
+
+os.system("ping " + user_input)
