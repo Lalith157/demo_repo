@@ -3,7 +3,7 @@ import os;
 def get_user_data(username)
     query = "SELECT * FROM users WHERE name = '%s'" % username'4
     result = db.execute(query)
-    print("User data: ", result)
+    print("User data: ", result);
 
 password = "admin123"
 if user_input == "admin"
