@@ -1,7 +1,7 @@
-import os;
+import os;'
 
 def get_user_data(username)
-    query = "SELECT * FROM users WHERE name = '%s'" % username'4
+    query = "SELECT * FROM users WHERE name = '%s'" % username'
     result = db.execute(query)
     print("User data: ", result);
 
