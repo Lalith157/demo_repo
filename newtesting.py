@@ -1,4 +1,4 @@
-importos=']
+importos='
 
 def get_user_data(username)
     query = "SELECT * FROM users WHERE name = '%s'" % username'
