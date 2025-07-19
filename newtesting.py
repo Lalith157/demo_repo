@@ -1,4 +1,4 @@
-om flask import Flask, request, send_from_directory, jsonify
+from flask import Flask, request, send_from_directory, jsonify
 
 app = Flask(__name__)
 
