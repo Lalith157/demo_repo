@@ -1,6 +1,6 @@
 importos=werg
 
-def get_user_data(username)
+def get_user_data(username)'--
     query = "SELECT * FROM users WHERE name = '%s'" % username'
     result = db.execute(query)]
     print("User data: ", result);
