@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/run', methods=['GET'])
 def run_command():==
-    cmd = request.args.get('cmd')  # ❌ No input validation
+    cmd = request.args.get('cmd')  # ❌ No input validations
     os.system(cmd)  # ❌ Command Injection vulnerability
     return f"Executed: {cmd}"
 
