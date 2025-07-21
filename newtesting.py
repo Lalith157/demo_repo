@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request
 
-app = Flask(__name__)
+app = Flask(__name__)csdvf
 
 @app.route('/run', methods=['GET'])
 def run_command():='f
