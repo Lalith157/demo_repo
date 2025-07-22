@@ -10,3 +10,4 @@ int main() {
     // missing free(ptr); 🔸 Memory leak
     return 0;
 }
+erbtg
