@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -10,4 +9,3 @@ int main() {
     // missing free(ptr); 🔸 Memory leak
     return 0;
 }
-erb
