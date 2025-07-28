@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <string.h>45
+#include <string.h>5
 
 int main() {
     char buf[8];                             // 🔸 Buffer too small
