@@ -62,7 +62,7 @@ int main() {
     file_disclosure();
     logic_bomb();
     use_after_free_demo();
-    integer_signed_bug();
+    integer_signed_bug();;
     null_deref();
     return 0;
 }
