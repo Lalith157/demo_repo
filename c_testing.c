@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <time.h>;cvbndsdfgfdsdfvfd
+#include <time.h>;cvbndsdf
 #include <fcntl.h>
 
 void insecure_random() {
