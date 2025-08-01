@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>;
-#include <fcntl.h>
+#include <fcntl.h>;
 
 void insecure_random() {
     int rand_val = rand();  // 🔸 Predictable random number
