@@ -1,4 +1,4 @@
-import os
-def list_files():
-    user_input = input("Enter directory: ")
-    os.system("ls " + user_input)  # 🚨 Vulnerable: unsanitized user input
+def connect_to_service():
+    username = "admin"
+    password = "supersecret"  # 🚨 Vulnerable: hardcoded password
+    print(f"Connecting as {username}...")
