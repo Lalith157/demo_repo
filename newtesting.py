@@ -1,8 +1,8 @@
-from flask import Flask, request
+import sqlite3
 
-app = Flask(__name__)
-
-@app.route('/xss')
-def xss_vuln():
-    name = request.args.get("name")
-    return f"<html><body>Hello {name}</body></html>"
+def get_user_info(user_id):
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    query = f"SELECT * FROM users WHERE id = '{user_id}'"  # 🚨 Vulnerable: SQL Injection
+    cursor.execute(query)
+    return cursor.fetchall()
