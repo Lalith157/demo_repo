@@ -1,8 +1,4 @@
-import sqlite3
-
-def get_user_info(user_id):
-    conn = sqlite3.connect("users.db")
-    cursor = conn.cursor()
-    query = f"SELECT * FROM users WHERE id = '{user_id}'"  # 🚨 Vulnerable: SQL Injection///
-    cursor.execute(query)
-    return cursor.fetchall()
+@app.route('/xss')
+def xss_vuln()
+    name = request.args.get("name")
+    return f"<html><body>Hello {name}</body></html>"  # 🚨 XSS
