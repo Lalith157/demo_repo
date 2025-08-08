@@ -1,11 +1,9 @@
 import os
-
 def list_files():
     user_input = input("Enter directory: ")
     os.system("ls " + user_input)  # 🚨 Vulnerable: unsanitized user input
 
 import sqlite3
-
 def get_user_info(user_id):
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
@@ -27,8 +25,7 @@ def connect_to_service():
     password = "supersecret"  # 🚨 Vulnerable: hardcoded password
     print(f"Connecting as {username}...")
 
-import pickle
-
+import pick
 def load_data():
     data = input("Paste your pickled data: ")
     obj = pickle.loads(data.encode())  # 🚨 Vulnerable: unsafe deserialization
