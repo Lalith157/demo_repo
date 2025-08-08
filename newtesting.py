@@ -1,42 +1,68 @@
-import osfg
-import sqlite3
-import json
-#dfgasdfdsdfdsdsfdgb
+# vulnerable_example.py
 
-def login():
-    username = input("Enter username: ")
-    password = input("Enter password: ")
-    
+# ----------------------------------------
+# ✅ 1. Command Injection
+# ----------------------------------------
+import os
+
+def list_files():
+    user_input = input("Enter directory: ")
+    os.system("ls " + user_input)  # 🚨 Vulnerable: unsanitized user input
+
+# ----------------------------------------
+# ✅ 2. SQL Injection
+# ----------------------------------------
+import sqlite3
+
+def get_user_info(user_id):
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
-    
-    # ❌ Vulnerability: SQL Injection
-    query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
+    query = f"SELECT * FROM users WHERE id = '{user_id}'"  # 🚨 Vulnerable: SQL Injection
     cursor.execute(query)
-    
-    result = cursor.fetchone()
-    if result:
-        print("Login successful!")
-    else:
-        print("Invalid credentials")
+    return cursor.fetchall()
 
-def load_config():
-    # ❌ Vulnerability: Hardcoded secret
-    api_key = "sk_test_1234567890abcdef"
-    print("API Key loaded:", api_key)
+# ----------------------------------------
+# ✅ 3. Cross-Site Scripting (XSS) (Flask example)
+# ----------------------------------------
+from flask import Flask, request
 
-def run_shell():
-    command = input("Enter a shell command: ")
-    # ❌ Vulnerability: Command injection
-    os.system(command)
+app = Flask(__name__)
 
-def unsafe_json_parse():
-    data = input("Enter JSON data: ")
-    # ❌ Vulnerability: Unsafe eval
-    parsed = eval(data)
-    print("Parsed JSON:", parsed)
+@app.route('/xss')
+def xss_vuln():
+    name = request.args.get("name")
+    return f"<html><body>Hello {name}</body></html>"  # 🚨 Vulnerable: reflected XSS
 
-login()
-load_config()
-run_shell()
-unsafe_json_parse()
+# ----------------------------------------
+# ✅ 4. Hardcoded Credentials
+# ----------------------------------------
+def connect_to_service():
+    username = "admin"
+    password = "supersecret"  # 🚨 Vulnerable: hardcoded password
+    print(f"Connecting as {username}...")
+
+# ----------------------------------------
+# ✅ 5. Insecure Deserialization
+# ----------------------------------------
+import pickle
+
+def load_data():
+    data = input("Paste your pickled data: ")
+    obj = pickle.loads(data.encode())  # 🚨 Vulnerable: unsafe deserialization
+    print("Loaded:", obj)
+
+# ----------------------------------------
+# ✅ 6. Path Traversal
+# ----------------------------------------
+def read_file():
+    filename = input("Enter filename to read: ")
+    with open("uploads/" + filename, "r") as f:  # 🚨 Vulnerable: Path Traversal
+        print(f.read())
+
+# Run for testing
+if __name__ == "__main__":
+    list_files()
+    get_user_info("1 OR 1=1")
+    connect_to_service()
+    load_data()
+    read_file()
