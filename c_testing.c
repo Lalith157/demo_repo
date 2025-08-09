@@ -3,7 +3,7 @@
 #include <string.h>
 #include <curl/curl.h>
 
-// Callback function to handle response data
+// Callback function to handle response data...
 size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp) {
     size_t realsize = size * nmemb;
     printf("%.*s", (int)realsize, (char *)contents);
