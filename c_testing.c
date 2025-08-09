@@ -1,44 +1,39 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <curl/curl.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-// Callback function to handle response data...
-size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp) {
-    size_t realsize = size * nmemb;
-    printf("%.*s", (int)realsize, (char *)contents);
-    return realsize;
+int is_admin(const char *username) {
+    // Simplistic check: treat "admin" as privileged
+    return (strcmp(username, "admin") == 0);
 }
 
-int main(void) {
-    CURL *curl;
-    CURLcode res;
-    char url[256];
+void perform_privileged_action(const char *username) {
+    char command[256];
+    // Dangerous: run a privileged command that operates on an account directory
+    // using unvalidated user-supplied input (risk: injection, wrong authorization)
+    snprintf(command, sizeof(command), "/usr/bin/chown %s /srv/users/%s/data", username, username);
+    system(command); // unsafe
+    printf("Performed privileged operation for %s\n", username);
+}
 
-    // Get URL from user input (vulnerable point)
-    printf("Enter URL to fetch: ");
-    fgets(url, sizeof(url), stdin);
+int main(int argc, char **argv) {
+    char username[128];
 
-    // Remove trailing newline
-    url[strcspn(url, "\n")] = 0;
+    if (argc < 2) {
+        printf("Usage: %s <username>\n", argv[0]);
+        return 1;
+    }
 
-    // Initialize libcurl
-    curl = curl_easy_init();
-    if (curl) {
-        // Set the URL to fetch (directly using user input)
-        curl_easy_setopt(curl, CURLOPT_URL, url);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+    strncpy(username, argv[1], sizeof(username)-1);
+    username[sizeof(username)-1] = '\0';
 
-        // Perform the request
-        res = curl_easy_perform(curl);
-        if (res != CURLE_OK) {
-            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
-        }
-
-        // Cleanup
-        curl_easy_cleanup(curl);
+    if (is_admin(username)) {
+        // Vulnerability: trusting client-supplied username as proof of authorization.
+        // An attacker could supply "admin" or manipulate input to bypass.
+        perform_privileged_action(username);
     } else {
-        fprintf(stderr, "Failed to initialize curl\n");
+        printf("Access denied for %s\n", username);
     }
 
     return 0;
