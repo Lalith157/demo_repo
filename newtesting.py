@@ -3,7 +3,7 @@ from flask import Flask, request, session, abort
 app = Flask(__name__)
 app.secret_key = "secure_random_key_12345"  # Replace with a secure key
 
-# Simulated user database
+# Simulated user database...
 users = {
     "alice": {"role": "user", "data": "Alice's private data", "password": "alice123"},
     "bob": {"role": "user", "data": "Bob's private data", "password": "bob123"},
