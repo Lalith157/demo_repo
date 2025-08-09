@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 int is_admin(const char *username) {
-    // Simplistic check: treat "admin" as privileged
+    // Simplistic check: treat "admin" as privileged...
     return (strcmp(username, "admin") == 0);
 }
 
