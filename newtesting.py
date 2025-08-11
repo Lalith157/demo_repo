@@ -4,7 +4,7 @@ def get_user_info(user_id):
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
 
-    # 🚨 Vulnerable: Directly concatenating user input into SQL query
+    # 🚨 Vulnerable: Directly concatenating user input into SQL query.....
     query = f"SELECT * FROM users WHERE id = '{user_id}'"
     cursor.execute(query)
 
