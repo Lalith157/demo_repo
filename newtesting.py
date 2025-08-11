@@ -1,16 +1,21 @@
-import sqlite3
+import ldap
 
-def get_user_info(user_id):
-    conn = sqlite3.connect("users.db")
-    cursor = conn.cursor()
+def search_user(username):
+    ldap_server = "ldap://localhost"
+    conn = ldap.initialize(ldap_server)
 
-    # 🚨 Vulnerable: Directly concatenating user input into SQL query.....
-    query = f"SELECT * FROM users WHERE id = '{user_id}'"
-    cursor.execute(query)
+    base_dn = "dc=example,dc=com"
 
-    results = cursor.fetchall()
-    conn.close()
-    return results
+    # 🚨 Vulnerable: Directly embedding user input into LDAP filter
+    search_filter = f"(uid={username})"
 
-# Example usage
-print(get_user_info("1 OR 1=1"))  # This would dump all users
+    try:
+        result = conn.search_s(base_dn, ldap.SCOPE_SUBTREE, search_filter)
+        return result
+    except ldap.LDAPError as e:
+        print("LDAP error:", e)
+    finally:
+        conn.unbind()
+
+# Example usage - attacker can inject
+#print(search_user("*)(&(objectClass=person)(uid=*))"))
