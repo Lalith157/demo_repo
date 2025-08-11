@@ -12,7 +12,4 @@ def find_user(username, password):
         print("Login successful!")
     else:
         print("Invalid credentials.")
-
-# Example of NoSQL injection payload:
-# username = {"$ne": None}, password = {"$ne": None}
 find_user({"$ne": None}, {"$ne": None})
