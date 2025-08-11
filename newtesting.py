@@ -1,21 +1,18 @@
-import ldap
+from pymongo import MongoClient
 
-def search_user(username):
-    ldap_server = "ldap://localhost"
-    conn = ldap.initialize(ldap_server)
+def find_user(username, password):
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client.test_db
 
-    base_dn = "dc=example,dc=com"
+    # 🚨 Vulnerable: Directly passing user input to query
+    query = {"username": username, "password": password}
+    user = db.users.find_one(query)
+    
+    if user:
+        print("Login successful!")
+    else:
+        print("Invalid credentials.")
 
-    # 🚨 Vulnerable: Directly embedding user input into LDAP filter
-    search_filter = f"(uid={username})"
-
-    try:
-        result = conn.search_s(base_dn, ldap.SCOPE_SUBTREE, search_filter)
-        return result
-    except ldap.LDAPError as e:
-        print("LDAP error:", e)
-    finally:
-        conn.unbind()
-
-# Example usage - attacker can inject
-#print(search_user("*)(&(objectClass=person)(uid=*))"))
+# Example of NoSQL injection payload:
+# username = {"$ne": None}, password = {"$ne": None}
+find_user({"$ne": None}, {"$ne": None})
