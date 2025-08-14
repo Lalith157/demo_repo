@@ -4,7 +4,7 @@ def login(user, password):
     conn = sqlite3.connect("test.db")
     cursor = conn.cursor()
 
-    # 🚨 Vulnerable: directly concatenating user input
+    # 🚨 Vulnerable: directly concatenating user input...
     query = f"SELECT * FROM users WHERE username = '{user}' AND password = '{password}'"
     print("Executing query:", query)
     cursor.execute(query)
