@@ -4,7 +4,7 @@ def find_user(username, password):
     client = MongoClient("mongodb://localhost:27017/")
     db = client.test_db
 
-    # 🚨 Vulnerable: Directly passing user input to query........
+    # 🚨 Vulnerable: Directly passing user input to query....
     query = {"username": username, "password": password}
     user = db.users.find_one(query)
     
