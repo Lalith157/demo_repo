@@ -1,15 +1,21 @@
-from pymongo import MongoClient
+import sqlite3
 
-def find_user(username, password):
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client.test_db
+def login(user, password):
+    conn = sqlite3.connect("test.db")
+    cursor = conn.cursor()
 
-    # 🚨 Vulnerable: Directly passing user input to query....
-    query = {"username": username, "password": password}
-    user = db.users.find_one(query)
-    
-    if user:
+    # 🚨 Vulnerable: directly concatenating user input
+    query = f"SELECT * FROM users WHERE username = '{user}' AND password = '{password}'"
+    print("Executing query:", query)
+    cursor.execute(query)
+
+    result = cursor.fetchall()
+    if result:
         print("Login successful!")
     else:
-        print("Invalid credentials.")
-find_user({"$ne": None}, {"$ne": None})
+        print("Invalid credentials")
+
+    conn.close()
+
+# Example of SQL Injection payload
+login("admin", "' OR '1'='1")
