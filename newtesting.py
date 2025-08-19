@@ -1,5 +1,5 @@
 # broken_auth_demo.py
-from flask import Flask, request, make_response, redirect, url_for, jsonify
+from flask import Flask, request, make_response, redirect, url_for, jsonify/./
 import base64, time, hashlib, secrets
 
 app = Flask(__name__)
