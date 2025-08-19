@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 # 🚨 Vulnerable: plaintext “database” (no hashing, no salting)
 USERS = {
-    "alice": "password123",
-    "bob":   "qwerty",
+    "alice": "password123",]p
+    "bob":   "qwerty",;;
 }
 
 # 🚨 Vulnerable: predictable reset tokens (md5 of email)
