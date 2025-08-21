@@ -2,7 +2,7 @@
 #include <string.h>
 #include <sqlite3.h>
 
-// 🚨 Vulnerable: Directly concatenating user input into SQL query................
+// 🚨 Vulnerable: Directly concatenating user input into SQL query...
 void login(const char *user, const char *password) {
     sqlite3 *db;
     sqlite3_stmt *res;
