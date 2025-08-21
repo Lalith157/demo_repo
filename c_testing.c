@@ -26,5 +26,3 @@ void login(const char *user, const char *password) {
         if (sqlite3_step(res) == SQLITE_ROW) {
             printf("Login successful!\n");
         } else {
-
-//dvfgbdfergbh
