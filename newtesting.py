@@ -1,4 +1,4 @@
-# vuln_demo.py  (intentionally insecure – for testing only)
+####################### vuln_demo.py  (intentionally insecure – for testing only)
 from flask import Flask, request, jsonify
 import sqlite3, os, hashlib, base64, time, pickle
 
