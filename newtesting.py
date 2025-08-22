@@ -19,6 +19,3 @@ def insecure_session_token(username):
     # base64 of "username:epoch" (no signing, no expiration check)
     raw = f"{username}:{int(time.time())}"
     return base64.b64encode(raw.encode()).decode()
-
-@app.route("/login")
-def login(): 
