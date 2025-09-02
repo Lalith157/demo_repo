@@ -2,19 +2,7 @@
 #include <string.h>
 #include <sqlite3.h>
 
-// 🚨 Vulnerable: Directly concatenating user input into SQL query...
-void login(const char *user, const char *password) {
-    sqlite3 *db;
-    sqlite3_stmt *res;
-    char sql[256];
-
-    // Open database
-    if (sqlite3_open("test.db", &db) != SQLITE_OK) {
-        printf("Cannot open database\n");
-        return;
-    }
-
-    // 🚨 Vulnerable query building
+  // 🚨 Vulnerable query building
     snprintf(sql, sizeof(sql),
              "SELECT * FROM users WHERE username='%s' AND password='%s';",
              user, password);
@@ -28,7 +16,3 @@ void login(const char *user, const char *password) {
         } else 
             return;
     }
-vkae jBcbkjNCjhabcjhBcn c
-kjbchjVHJCb jb
-JCbHJBscdvbgnhmgj
-efgrthyjfds
