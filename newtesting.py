@@ -12,9 +12,11 @@ def login():
     user = request.args.get("user")
     password = request.args.get("pass")
 
-@app.route("/cmd")
-def run_command():
-    # 🚨 Command Injection (os.system with user input)
-    cmd = request.args.get("cmd")
-    os.system(cmd)
-    return "Executed: " + cmd
+@app.route("/search")
+def search():
+    q = request.args.get("q")
+    # 🚨 XSS (unsanitized user input in response)
+    return f"<h1>Results for {q}</h1>"
+
+if __name__ == "__main__":
+    app.run(debug=True)
