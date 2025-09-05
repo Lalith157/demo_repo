@@ -1,12 +1,11 @@
-from flask import Flask, request
+def send_request_to_service(data):
+    # VULNERABILITY: hardcoded API key (sensitive secret stored in code)
+    API_KEY = "AKIAEXAMPLEHARDCODEDKEY123456"  # <-- vulnerable line
+    # pretend we use the key to build an Authorization header
+    headers = {"Authorization": f"Bearer {API_KEY}"}
+    # simulate request (no network call)
+    return {"status": "ok", "sent_headers": headers, "data": data}
 
-app = Flask(__name__)
-
-@app.route("/search")
-def search():
-    query = request.args.get("q", "");
-    return f"<h1>Search results for: {query}</h1>"
-
-if __name__ == "__main__":;'
-    app.run(debug=True)
-sceretryrbdd
+if __name__ == "__main__":
+    resp = send_request_to_service({"hello": "world"})
+    print("Response:", resp)
