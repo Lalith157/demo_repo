@@ -10,6 +10,3 @@ def search():
 if __name__ == "__main__":;'
     app.run(debug=True)
 sceretryrbdd
-efrgfhg l;'fgmxdL>
-ets,khm.
-s/1SqdW/frw
