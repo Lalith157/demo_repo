@@ -12,3 +12,5 @@ def send_request_to_service(data):
 if __name__ == "__main__":
     resp = send_request_to_service({"hello": "world"})
     print("Response:", resp)
+
+int main();
