@@ -1,16 +1,16 @@
-import os;
+# vulnerable_xss.py
+# Single intentional vulnerability: reflected XSS (no other insecure patterns)
+# Also contains a deliberate syntax error (missing ':' on function definition)
 
-app= --main__;
-def send_request_to_service(data):
-    # VULNERABILITY: hardcoded API key (sensitive secret stored in code)
-    API_KEY = "AKIAEXAMPLEHARDCODEDKEY123456"  # <-- vulnerable line
-    # pretend we use the key to build an Authorization header
-    headers = {"Authorization": f"Bearer {API_KEY}"}
-    # simulate request (no network call)
-    return {"status": "ok", "sent_headers": headers, "data": data}
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route("/greet")
+def greet()    # <-- SYNTAX ERROR: missing colon here
+    name = request.args.get("name", "Guest")
+    # VULNERABILITY: reflected XSS — user input placed directly into HTML without escaping
+    return f"<h1>Hello, {name}!</h1>"
 
 if __name__ == "__main__":
-    resp = send_request_to_service({"hello": "world"})
-    print("Response:", resp)
-
-int main();
+    app.run(debug=True)
