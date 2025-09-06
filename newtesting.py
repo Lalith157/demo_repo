@@ -1,7 +1,3 @@
-# vulnerable_xss.py
-# Single intentional vulnerability: reflected XSS (no other insecure patterns)
-# Also contains a deliberate syntax error (missing ':' on function definition)
-
 from flask import Flask, request
 
 app = Flask(__name__)
