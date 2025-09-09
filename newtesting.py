@@ -1,16 +1,11 @@
-# vulnerable_xss.py
-# Single intentional vulnerability: reflected XSS (no other insecure patterns)
+username = "admin"
+password = "12345"   # Hardcoded password
 
-from flask import Flask, request
+def login(user, pwd):
+    if user == username and pwd == password:
+        print("Login successful!")
+    else:
+        print("Login failed!")
 
-app = Flask(__name__)
-
-@app.route("/greet")
-def greet():
-    # VULNERABILITY: user input is inserted directly into HTML without escaping
-    # This is a reflected XSS vulnerability.
-    name = request.args.get("name", "Guest")
-    return f"<html><body><h1>Hello, {name}!</h1></body></html>"
-
-if __name__ == "__main__":
-    app.run(debug=True)
+# Example call
+login("admin", "12345")
